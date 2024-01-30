@@ -3,6 +3,8 @@ package ru.test.psychology.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @AllArgsConstructor
@@ -33,4 +35,10 @@ public class User {
 
     @Column(name = "gender")
     private String gender;
+
+    @OneToMany(
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(name = "user_id")
+    private List<Test> tests;
 }
